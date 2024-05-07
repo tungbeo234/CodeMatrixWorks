@@ -1,12 +1,2 @@
-const gnomeSort = (arr) => {
-  let index = 0;
-  while (index < arr.length) {
-    if (index === 0 || arr[index] >= arr[index - 1]) {
-      index++;
-    } else {
-      [arr[index], arr[index - 1]] = [arr[index - 1], arr[index]];
-      index--;
-    }
-  }
-  return arr;
-};
+const deepFlatten = (arr) =>
+  [].concat(...arr.map((v) => (Array.isArray(v) ? deepFlatten(v) : v)));
