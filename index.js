@@ -1,15 +1,11 @@
-function uniquePaths(m, n) {
-  const dp = new Array(m).fill(0).map(() => new Array(n).fill(0));
-  for (let i = 0; i < m; i++) {
-    dp[i][0] = 1;
+function isPrime(n) {
+  if (n <= 1) return false;
+  if (n <= 3) return true;
+  if (n % 2 === 0 || n % 3 === 0) return false;
+  let i = 5;
+  while (i * i <= n) {
+    if (n % i === 0 || n % (i + 2) === 0) return false;
+    i += 6;
   }
-  for (let j = 0; j < n; j++) {
-    dp[0][j] = 1;
-  }
-  for (let i = 1; i < m; i++) {
-    for (let j = 1; j < n; j++) {
-      dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
-    }
-  }
-  return dp[m - 1][n - 1];
+  return true;
 }
